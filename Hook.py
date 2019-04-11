@@ -1,10 +1,18 @@
-def   increment_association_number():
-  print("Hello from increment_association_number")
+class Hook:
+    Hook_Name = ""
+    Hook_Sequence_Number = 0
+    Boolean_Hook_Status = False
+    Hook_Description = ""
+    Hook_Association_Number = 0
 
-def   decrement_association_number():
-  print("Hello from decrement_association_number")
+def increment_association_number():
+    print("Hello from a function")
+    
+def decrement_association_number():
+    print("Hello from a function")
 
-def   execute():
-  print("Hello from execute")
+def execute():
+    print("Hello from a function")
 
-decrement_association_number()
+def know_hook_attributes():
+    print("Hello from a function") 
