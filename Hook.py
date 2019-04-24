@@ -4,31 +4,23 @@ class Hook:
     Boolean_Hook_Status = False
     Hook_Description = ""
     Hook_Association_Number = 0
-
-def increment_association_number():
-    print("Hello from a function")
+    hookPath = ""
+    def __init__(self,hName,seqNum, status,desc,assocNum,path):
+        self.Hook_Name = hName
+        self.Hook_Sequence_Number = seqNum
+        self.Boolean_Hook_Status = status
+        self.Hook_Description = desc
+        self.Hook_Association_Number = assocNum
+        self.hookPath = path
     
-def decrement_association_number():
-    print("Hello from a function")
 
-def execute():
-    print("Hello from a function")
+    def increment_association_number(self):
+        print("Hello from a function")
+        self.Hook_Association_Number = self.Hook_Association_Number + 1
+        
+    def decrement_association_number(self):
+        print("Hello from a function")
+        self.Hook_Association_Number =  self.Hook_Association_Number - 1
 
-def know_hook_attributes():
-    print("Hello from a function") 
-
-def execute_hook_sequence():
-    print("Hello from a function")
-
-def __add_hook(): #private
-    print("Hello") 
-
-def __update_hook_sequencing(): #private
-    print("Hello")
-
-def __update_hook_collection_sequencing(): #private
-    print("Hello")
-
-def __remove_hook(): #private
-    print("Hello")
-
+    def execute(self):
+        print("Hello from a function")
