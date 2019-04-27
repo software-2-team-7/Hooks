@@ -5,26 +5,33 @@ class HookCollection:
     Hook_Collection_Description = ""
     Hooks = [] #Hooks: List<Hook> 
 
-def knowIfHookSequenceIsUnique():
-    print("A functio")
-def knowIfHookCollectionSequenceIsUnique():
-    print("A function")
-def searchHooks():
-    print("A function")
-def deleteHook():
-    print("A function")
+    def __init__(self,name,seqNum,status,desc):
+        self.Hook_Collection_Name = name
+        self.Hook_Collection_Sequence_Number = seqNum
+        self.Hook_Collection_Status = status
+        self.Hook_Collection_Description = desc
 
-def execute_hook_sequence():
-    print("Hello from a function")
 
-def __add_hook(): #private
-    print("Hello") 
+        def knowIfHookSequenceIsUnique(self):
+            print("A functio")
+        def knowIfHookCollectionSequenceIsUnique(self):
+            print("A function")
+        def searchHooks(self):
+            print("A function")
+        def deleteHook(self):
+            print("A function")
 
-def __update_hook_sequencing(): #private
-    print("Hello")
+        def execute_hook_sequence(self):
+            print("Hello from a function")
 
-def __update_hook_collection_sequencing(): #private
-    print("Hello")
+        def __add_hook(self): #private
+            print("Hello") 
 
-def __remove_hook(): #private
-    print("Hello")
+        def __update_hook_sequencing(self): #private
+            print("Hello")
+
+        def __update_hook_collection_sequencing(self): #private
+            print("Hello")
+
+        def __remove_hook(self): #private
+            print("Hello")
