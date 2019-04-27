@@ -22,5 +22,9 @@ class Hook:
         print("Hello from a function")
         self.Hook_Association_Number =  self.Hook_Association_Number - 1
 
-    def execute(self):
+    def execute(self, packet):
         print("Hello from a function")
+        if (self.Boolean_Hook_Status):
+            exec(self.hookPath,packet)
+            
+        

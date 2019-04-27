@@ -12,26 +12,26 @@ class HookCollection:
         self.Hook_Collection_Description = desc
 
 
-        def knowIfHookSequenceIsUnique(self):
-            print("A functio")
-        def knowIfHookCollectionSequenceIsUnique(self):
-            print("A function")
-        def searchHooks(self):
-            print("A function")
-        def deleteHook(self):
-            print("A function")
+    def knowIfHookSequenceIsUnique(self):
+        print("A functio")
+    def knowIfHookCollectionSequenceIsUnique(self):
+        print("A function")
+    def searchHooks(self):
+        print("A function")
+    def deleteHook(self):
+        print("A function")
 
-        def execute_hook_sequence(self):
-            print("Hello from a function")
+    def execute_hook_sequence(self):
+        print("Hello from a function")
 
-        def __add_hook(self): #private
-            print("Hello") 
+    def __add_hook(self): #private
+        print("Hello") 
 
-        def __update_hook_sequencing(self): #private
-            print("Hello")
+    def __update_hook_sequencing(self): #private
+        print("Hello")
 
-        def __update_hook_collection_sequencing(self): #private
-            print("Hello")
+    def __update_hook_collection_sequencing(self): #private
+        print("Hello")
 
-        def __remove_hook(self): #private
-            print("Hello")
+    def __remove_hook(self): #private
+        print("Hello")
