@@ -34,6 +34,7 @@ class Hook:
     def execute(self, packet):
         print("Executing hook " + self.hookPath + "...")
         if (self.Boolean_Hook_Status):
+            #Code passes a string version of packet information to the indicated script by running it in os
             os.system("python " + self.hookPath + " " + packet.toText())
 
             

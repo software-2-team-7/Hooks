@@ -2,7 +2,7 @@ import Hook
 from Packet import Packet
 import time
 
-
+#A main method for testing hook functionality.
 def main():
     testHook = Hook.Hook("Test",1,True,"A test hook!",2,"testHook.py")
 
