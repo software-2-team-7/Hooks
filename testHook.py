@@ -1,15 +1,16 @@
-import sys
-import os
+class run:
 
-print ("Hook executed!")
+    packet = ""
 
-def main():
-    doop = 0
-    
+    def __init__(self, packet):
+        self.packet = packet
+        print("Initialized.")
+
+    def execute(self):
+        packet = self.packet
+        print("Running!")
+        return ("Function run!"  + self.packet + " ")
 
 
-if __name__ == "__main__": 
-    main()
-    print(sys.argv[1])
-    print(sys.argv[2] + ", " + sys.argv[3] + ", " + sys.argv[4] + sys.argv[5] + ", " + sys.argv[6] + ", " + sys.argv[7])
+
 

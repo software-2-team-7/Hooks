@@ -9,7 +9,8 @@ class Hook:
     Hook_Description = "" #String
     Hook_Association_Number = 0 #Int
     hookPath = "" #String
-
+    script = ""
+    
     def __init__(self,hName,seqNum, status,desc,assocNum,path):
         self.Hook_Name = hName
         self.Hook_Sequence_Number = seqNum
@@ -33,12 +34,24 @@ class Hook:
 
     def execute(self, packet):
         print("Executing hook " + self.hookPath + "...")
-        getFilename = self.hookPath.strip(".py")
+        
+        getFileName = self.hookPath.split("/")
+        fileName = getFileName[len(getFileName)-1]
+
         if (self.Boolean_Hook_Status):
             #using importlib
-            res = importlib.util.spec_from_file_location(self.hookPath, self.hookPath)
-            mod = importlib.util.module_from_spec(res)
-            res.loader.exec_module(mod)
+            res = importlib.util.spec_from_file_location(fileName, self.hookPath)
+            script = importlib.util.module_from_spec(res)
+            res.loader.exec_module(script)
+            run = script.run(packet)
+            newPacket = run.execute()
+            print (newPacket)
+            return newPacket
+
+            
+
+
+            
             
 
             
