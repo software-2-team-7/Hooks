@@ -24,8 +24,15 @@ class HookCollection:
 
     def executeHookSequence(self,packet):
         if (self.Hook_Collection_Status):
+            newPacket = ""
             for h in self.Hooks:
-                h.execute(packet)
+                newPacket = h.execute(packet)
+        return newPacket
+
+
+
+        
+            
 
     def addHook(self,h): #private
         self.Hooks.add(h)
