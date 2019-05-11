@@ -9,7 +9,7 @@ class run:
     def execute(self):
         packet = self.packet
         print("Running!")
-        return ("Function run!"  + self.packet + " ")
+        return self.packet
 
 
 

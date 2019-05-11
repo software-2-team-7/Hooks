@@ -2,7 +2,7 @@ import importlib
 import importlib.util
 
 #Class definition for Hooks
-class Hook:
+class Hook(object):
     Hook_Name = "" #String
     Hook_Sequence_Number = 0 #Integer
     Boolean_Hook_Status = False #Boolean
@@ -11,7 +11,7 @@ class Hook:
     hookPath = "" #String
     script = ""
     
-    def __init__(self,hName,seqNum, status,desc,assocNum,path):
+    def __init__(self, hName, seqNum, status, desc, assocNum, path):
         self.Hook_Name = hName
         self.Hook_Sequence_Number = seqNum
         self.Boolean_Hook_Status = status

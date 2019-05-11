@@ -1,4 +1,4 @@
-class HookCollection:
+class HookCollection(object):
     Hook_Collection_Name = ""
     Hook_Collection_Sequence_Number = 0
     Hook_Collection_Status = False
@@ -35,7 +35,7 @@ class HookCollection:
             
 
     def addHook(self,h): #private
-        self.Hooks.add(h)
+        self.Hooks.append(h)
 
     def updateHookSequencing(self): #private
         print("Hello")
