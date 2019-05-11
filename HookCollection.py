@@ -4,6 +4,7 @@ class HookCollection(object):
     Hook_Collection_Status = False
     Hook_Collection_Description = ""
     Hooks = [] #Hooks: List<Hook> 
+    
 
     def __init__(self,name,seqNum,status,desc,h):
         self.Hook_Collection_Name = name
@@ -46,3 +47,18 @@ class HookCollection(object):
 
     def removeHook(self): #private
         print("Hello")
+
+
+    def insertionSort(self):
+        for index in range(1,len(self.Hooks)):
+            currentHook = self.Hooks[index]
+            currentvalue = self.Hooks[index].Hook_Sequence_Number
+            position = index
+            while position>0 and self.Hooks[position-1].Hook_Sequence_Number > currentvalue:
+                self.Hooks[position]=self.Hooks[position-1]
+                position = position-1
+                
+            self.Hooks[position]=currentHook
+
+
+
