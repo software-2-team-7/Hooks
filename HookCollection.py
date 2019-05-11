@@ -49,7 +49,7 @@ class HookCollection(object):
         print("Hello")
 
 
-    def insertionSort(self):
+    def insertionSort_Hook_Sequence_Number(self):
         for index in range(1,len(self.Hooks)):
             currentHook = self.Hooks[index]
             currentvalue = self.Hooks[index].Hook_Sequence_Number
@@ -57,7 +57,7 @@ class HookCollection(object):
             while position>0 and self.Hooks[position-1].Hook_Sequence_Number > currentvalue:
                 self.Hooks[position]=self.Hooks[position-1]
                 position = position-1
-                
+
             self.Hooks[position]=currentHook
 
 
