@@ -1,30 +1,35 @@
 from Hook import Hook
 from HookCollection import HookCollection
-from Packet import Packet
+from HookCollectionManager import HookCollectionManager
 import time
 
 #A main method for testing hook functionality.
 def main():
-    testHook = Hook("Test",1,True,"A test hook!",2,"C:/Users/octob/Documents/NTPSProject/Hooks/testHook.py")
+
+
+    testHook = Hook("Test",True,"A test hook!",0,"C:/Users/octob/Documents/NTPSProject/Interceptor/testHook.py")
 
     print(testHook.Hook_Name)
     print(testHook.Hook_Description)
 
-    hooks = {testHook}
+    hooks = []
 
     hc = HookCollection("testCollection",0,True,"A test hook collection.",hooks)
 
-  
-
     hc.addHook(testHook)
 
-    p = Packet("Test_Packet","Current Time")
+    collections = [hc]
+
+    manager = HookCollectionManager(collections,testHook)
+
+    p = "Packet("
 
     #P.pName = "https Connection"
 
-    print("Calling execute on hook collection...")
+    print("Calling execute on hook manager...")
 
-    hc.executeHookSequence(p)
+    #hc.executeHookSequence(p)
+    manager.executeCollection(p)
 
 
 

@@ -11,9 +11,8 @@ class Hook(object):
     hookPath = "" #String
     script = ""
     
-    def __init__(self, hName, seqNum, status, desc, assocNum, path):
+    def __init__(self, hName, status, desc, assocNum, path):
         self.Hook_Name = hName
-        self.Hook_Sequence_Number = seqNum
         self.Boolean_Hook_Status = status
         self.Hook_Description = desc
         self.Hook_Association_Number = assocNum
@@ -32,6 +31,14 @@ class Hook(object):
         print("Hello from a function")
         self.Hook_Sequence_Number =  self.Hook_Sequence_Number - 1
 
+    def setHookStatus(self):
+        if (self.Hook_Sequence_Number):
+            self.Hook_Sequence_Number = False
+        else:
+            self.Hook_Sequence_Number = True
+        
+
+
     def execute(self, packet):
         print("Executing hook " + self.hookPath + "...")
         
@@ -41,6 +48,7 @@ class Hook(object):
         if (self.Boolean_Hook_Status):
             #using importlib
             resource = importlib.util.spec_from_file_location(fileName, self.hookPath)
+
             script = importlib.util.module_from_spec(resource)
             resource.loader.exec_module(script)
             run = script.run(packet)
