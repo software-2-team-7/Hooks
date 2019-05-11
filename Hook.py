@@ -40,9 +40,9 @@ class Hook(object):
 
         if (self.Boolean_Hook_Status):
             #using importlib
-            res = importlib.util.spec_from_file_location(fileName, self.hookPath)
-            script = importlib.util.module_from_spec(res)
-            res.loader.exec_module(script)
+            resource = importlib.util.spec_from_file_location(fileName, self.hookPath)
+            script = importlib.util.module_from_spec(resource)
+            resource.loader.exec_module(script)
             run = script.run(packet)
             newPacket = run.execute()
             print (newPacket)
