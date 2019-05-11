@@ -46,15 +46,16 @@ class Hook(object):
         fileName = getFileName[len(getFileName)-1]
 
         if (self.Boolean_Hook_Status):
-            #using importlib
+            
+            #using importlib, import the script given by the client
             resource = importlib.util.spec_from_file_location(fileName, self.hookPath)
-
             script = importlib.util.module_from_spec(resource)
-            resource.loader.exec_module(script)
+            resource.loader.exec_module(script) #initalize the script object
+            #we create a varible storing and instance of the script class called 'run'
             run = script.run(packet)
-            newPacket = run.execute()
+            newPacket = run.execute() #we call the script's .execute() command and get the packet back
             print (newPacket)
-            return newPacket
+            return newPacket #return the packet to the caller
 
             
 
