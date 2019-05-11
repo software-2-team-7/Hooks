@@ -3,6 +3,7 @@ from kamene.all import *
 from netfilterqueue import NetfilterQueue
 from Hook import Hook
 from HookCollection import HookCollection
+from rules import rules
 
 def modify(packet):
     testHook = Hook("Test",1,True,"Neat!",2,"testHook.py")
@@ -20,12 +21,14 @@ def modify(packet):
     packet.accept() #accept the packet
 
 
-
+rule = rules()
+rule.set()
 nfqueue = NetfilterQueue()
 #1 is the iptabels rule queue number, modify is the callback function
-nfqueue.bind(1, modify) 
+nfqueue.bind(1, modify)
 try:
     print ("[*] waiting for data")
     nfqueue.run()
 except KeyboardInterrupt:
+    rule.flush()
     pass
