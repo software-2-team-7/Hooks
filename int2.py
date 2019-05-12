@@ -1,12 +1,12 @@
 #! /usr/bin/env python3
 from kamene.all import *
 from netfilterqueue import NetfilterQueue
-from Hook import Hook
-from HookCollection import HookCollection
+from HookManager.Hook import Hook
+from HookManager.HookCollection import HookCollection
 from rules import rules
 
 def modify(packet):
-    testHook = Hook("Test",1,True,"Neat!",2,"testHook.py")
+    testHook = Hook("Test",True,"Neat!",2,"testHook.py")
     hooks = []
     hc = HookCollection("testCollection",0,True,"Test hook coll.",hooks)
     hc.addHook(testHook)
@@ -16,7 +16,7 @@ def modify(packet):
 
     #modify the packet all you want here
 
-    packet.set_payload(str(pkt)) #set the packet content to our modified version
+    #packet.set_payload(str(pkt)) #set the packet content to our modified version
 
     packet.accept() #accept the packet
 
