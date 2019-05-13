@@ -2,7 +2,7 @@ from netfilterqueue import *
 import socket, os
 
 class rules(object):
-
+	captureFilterStatus = False
 	def __init__(self):
 		print("i am iptables")
 
@@ -17,3 +17,5 @@ class rules(object):
 		ip_addr = s.getsockname()[0]
 		os.system("iptables -I INPUT -d "+ip_addr+" -j NFQUEUE --queue-num 1")
 
+	def enableFilter(self):
+		rules.captureFilterStatus = True
