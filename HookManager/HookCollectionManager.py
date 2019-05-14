@@ -43,5 +43,4 @@ class HookCollectionManager(object):
     def getHooks(self):
         return self.hooks
 
-    def 
 
