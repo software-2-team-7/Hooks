@@ -38,7 +38,6 @@ class Hook(object):
             self.Hook_Sequence_Number = True
         
 
-
     def execute(self, packet):
         print("Executing hook " + self.hookPath + "...")
         

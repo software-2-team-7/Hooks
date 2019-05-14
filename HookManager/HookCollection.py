@@ -20,7 +20,7 @@ class HookCollection(object):
     def knowIfHookCollectionSequenceIsUnique(self):
         print("A function")
 
-    def searchHooks(self):
+    def searchHooks(self,name):
         print("A function")
 
     def executeHookSequence(self,packet):
@@ -31,15 +31,13 @@ class HookCollection(object):
         return newPacket
 
 
-
     def updateHookSequencing(self): #private
         print("Hello!")
 
          
     def addHook(self,h): #private
         h.Hook_Association_Number+=1
-        self.Hooks.append(h)
-        
+        self.Hooks.append(h)   
         
 
     def updateCollectionSequencing(self): #private
@@ -47,7 +45,6 @@ class HookCollection(object):
 
     def removeHook(self): #private
         print("Hello")
-
 
     def insertionSort_Hook_Sequence_Number(self):
         for index in range(1,len(self.Hooks)):
@@ -59,6 +56,21 @@ class HookCollection(object):
                 position = position-1
 
             self.Hooks[position]=currentHook
+
+    def getCollName(self):
+        return self.Hook_Collection_Name
+    
+    def getCollSeqNum(self):
+        return self.Hook_Collection_Sequence_Number
+    
+    def getCollStatus(self):
+        return self.Hook_Collection_Status
+
+    def getCollDesc(self):
+        return self.Hook_Collection_Description
+    
+    def getHooks(self):
+        return self.Hooks 
 
 
 
