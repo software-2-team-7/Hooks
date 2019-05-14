@@ -14,8 +14,8 @@ class HookCollectionManager(object):
     def executeCollection(self,packet):
         newPacket = packet
         for h in self.collection:
-<<<<<<< HEAD
-            h.executeHookSequence(packet)
+            newPacket = h.executeHookSequence(newPacket)
+        return newPacket
 
     def insertionSort_Hook_Collection_Sequence_Number(self):
         for index in range(1,len(self.collection)):
@@ -27,13 +27,6 @@ class HookCollectionManager(object):
                 position = position-1
 
             self.collection[position]=currentHookCollection
-=======
-            newPacket = h.executeHookSequence(newPacket)
-        return newPacket
-        
-    def deleteCollection(self):
-        print("Collection deleted.")
->>>>>>> 9bc7308388ceb9a8182ea74db119ea0290b01fc1
     
     def deleteHook(self):
         print("Hello!")
@@ -50,4 +43,5 @@ class HookCollectionManager(object):
     def getHooks(self):
         return self.hooks
 
+    def 
 
