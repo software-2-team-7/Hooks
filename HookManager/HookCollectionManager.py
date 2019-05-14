@@ -12,7 +12,9 @@ class HookCollectionManager(object):
                 h.execute(packet)
     
     def executeCollection(self,packet):
+        newPacket = packet
         for h in self.collection:
-            h.executeHookSequence(packet)
-    
+            newPacket = h.executeHookSequence(newPacket)
+        return newPacket
+
 
