@@ -1,7 +1,14 @@
 from kamene.all import *
 
-class TcpSrcPort:
-    def changeTCPPort(self, packet):
+class run:
+
+    def __init__(self, packet):
+        self.packet = packet
+        print("Initialized.")
+
+
+    def execute(self ):
         newPort = 55555
-        if(packet.hasLayer(TCP)):
-            packet.sport = newPort
+        if(self.packet.hasLayer(TCP)):
+            self.packet.sport = newPort
+        return self.packet
