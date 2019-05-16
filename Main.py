@@ -11,7 +11,7 @@ from CreateEditHookOverlay import Ui_CreateEditHook as CreateEditHook
 from CreateEditHookCollectionOverlay import Ui_Dialog as CreateEditHookCollection
 from MessageBasedOverlay import Ui_Dialog as OkDialog
 from Proxy import Proxy
-
+import threading
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -41,8 +41,7 @@ class Ui_MainWindow(object):
         self.gridLayout_15.addWidget(self.HV_GroupBox_2, 0, 0, 1, 1)
         self.StackView.addWidget(self.page)
 
-	#Proxy
-        self.proxy = Proxy()
+
 
         # Hook View
         self.HookView = QtWidgets.QWidget()
@@ -766,6 +765,7 @@ class Ui_MainWindow(object):
         okdialog.setupUi(Dialog, tittle, message)
         Dialog.exec()
 
+    t1 = threading.Thread()
     def isEnabled(self, combobox, interceptionButton, queueText):
         status = combobox.currentText()
         if(status == "Enabled"):
@@ -773,8 +773,14 @@ class Ui_MainWindow(object):
                               "Proxy behavior has been enabled.\nThe system has backed up the system's proxy settings and will restore to it when the proxy behavior is disabled.")
             interceptionButton.setDisabled(False)
             queueText.setDisabled(False)
+            #Proxy
+            self.proxy = Proxy()
             self.proxyOn()
-            self.proxy.start()
+            #self.proxy.intercept()
+            self.t1 = threading.Thread(target=self.proxy.intercept)
+            self.t1.setDaemon(True)
+            self.t1.start()
+           
 
         elif(status == "Disabled"):
             interceptionButton.setDisabled(True)
@@ -782,7 +788,7 @@ class Ui_MainWindow(object):
             self.dialogWindow("Proxy Behavior Disabled Notification",
                               "Proxy behavior has been disabled.\nThe system has restored to the previous proxy settings and it will stop appending packet information to the live traffic PCAP file.")
             self.proxyOff()
-            self.proxy.join()
+            #self.t1.join()
 
     def showHookInfo(self, hookProperties):
         hookProperties.show()
@@ -1050,13 +1056,12 @@ class Ui_MainWindow(object):
         self.OV_PacketFromPCAPButton.setText(_translate("MainWindow", "Packet from PCAP"))
 
 
-
-
 if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+        import sys
+        app = QtWidgets.QApplication(sys.argv)
+        MainWindow = QtWidgets.QMainWindow()
+        ui = Ui_MainWindow()
+        ui.setupUi(MainWindow)
+        MainWindow.show()
+        sys.exit(app.exec_())
+    

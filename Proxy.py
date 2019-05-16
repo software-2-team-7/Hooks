@@ -6,9 +6,12 @@ from HookManager.HookCollection import HookCollection
 from rules import rules as rules
 from threading import Thread
 from time import sleep
+import threading
 
-class Proxy(Thread):
+
+class Proxy(object):
 	proxyStatus = False;
+	nfqueue = NetfilterQueue()
 	def __init__(self):
 		print("Proxy")
 		self.proxyStatus = False;
@@ -25,28 +28,31 @@ class Proxy(Thread):
 
 		pkt = IP(packet.get_payload()) #converts the raw packet to a scapy compatible string
 
-		pkt.summary()
+		pkt.show2()
 
 		packet.accept() #accept the packet
 
 
-	def run(self):
+	def intercept(self):
 		print("running")
 		#while(self.proxyStatus):
 		#rule.enableFilter() To enable filter
-		nfqueue = NetfilterQueue()
-		nfqueue.bind(1, self.modify)
-		#try:
-		print ("[*] waiting for data")
-		nfqueue.run()
-		#except KeyboardInterrupt:
+		#self.nfqueue = NetfilterQueue()
+		self.nfqueue.unbind()
+		self.nfqueue.bind(1, self.modify)
 
-			#   pass
+		print ("[*] waiting for data")
+		self.nfqueue.run()
+
+
 
 	def turnOn(self):
 		self.rule.set()
 		self.proxyStatus = True
 
-	def turnOff(self):
+	def turnOff(self):	
 		self.rule.flush()
 		self.proxyStatus = False
+
+		
+
