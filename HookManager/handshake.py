@@ -8,9 +8,16 @@ class run:
             src = packet.src
             srcPort = packet.sport
             dstPort = packet.dport
-            ack = packet.ack + 1 
             seq = packet.seq
-            ip = IP(srrc = src, dst = dst)
-            SYN = TCP(sport = srcPort, dport = dstPort, seq = seq, ack = ack)
-            SYN_ACK = sr1(ip/SYN)
+            ack = packet.ack
+
+
+            ip = IP(src = src, dst = dst)
+            
+            SYN = TCP(sport = srcPort, dport = dstPort, flag = 'S', seq = seq, ack = ack)
+            SYN_ACK = sr1(ip/SYN) #only returns one packet that answered the packet sent.
+
+            ACK = TCP(sport = srcPort, dport = dstPort, flag = 'A', seq = SYN_ACK.ack + 1, ack = SYN_ACK.seq + 1)
+            send(ip/ACK)
+            
 
